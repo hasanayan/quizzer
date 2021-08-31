@@ -1,11 +1,13 @@
 import { Auth0Provider } from "@auth0/auth0-react";
 import { PrivateRoute } from "components/PrivateRoute";
-import { Admin } from "containers/Admin";
 import { Quizzes } from "containers/User";
 import { Suspense } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { AppLayout } from "components/AppLayout";
 import { FetcherSetup } from "services/Fetcher";
+import React from "react";
+
+const Admin = React.lazy(() => import("./containers/Admin"));
 
 const requestedPermissions = [
   "content:read",
@@ -14,6 +16,7 @@ const requestedPermissions = [
   "admin",
 ];
 const scope = requestedPermissions.concat(["profile email openid"]).join(" ");
+
 const App = () => {
   return (
     <BrowserRouter>

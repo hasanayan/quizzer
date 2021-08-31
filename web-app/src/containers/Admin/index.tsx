@@ -3,7 +3,7 @@ import { FC } from "react";
 import { Route, useRouteMatch } from "react-router-dom";
 import { Quiz } from "containers/Admin/Quizzes";
 
-export const Admin: FC = () => {
+const Admin: FC = () => {
   const { path } = useRouteMatch();
 
   return (
@@ -17,3 +17,5 @@ export const Admin: FC = () => {
     </Switch>
   );
 };
+
+export default Admin;
