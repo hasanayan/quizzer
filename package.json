@@ -1,0 +1,18 @@
+{
+  "name": "quizzer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "cd ./web-app && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:api": "cd ./api && dotnet run",
+    "start:app": "cd ./web-app && npm start",
+    "start": "concurrently \"npm run start:api\" \"npm run start:app\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.2.1"
+  }
+}

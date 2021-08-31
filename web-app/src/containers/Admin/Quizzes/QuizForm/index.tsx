@@ -98,11 +98,18 @@ export const QuizForm: FC<{ value?: API.Quiz }> = ({ value }) => {
                       >
                         <Input placeholder="Quiz Name" {...field} />
                       </FormItem>
-                      {errors.questions?.message && (
-                        <Typography.Text type="danger">
-                          {errors.questions?.message}
-                        </Typography.Text>
-                      )}
+
+                      {
+                        //@ts-expect-error
+                        errors.questions?.message && (
+                          <Typography.Text type="danger">
+                            {
+                              //@ts-expect-error
+                              errors.questions?.message
+                            }
+                          </Typography.Text>
+                        )
+                      }
                     </>
                   );
                 }}

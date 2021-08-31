@@ -1,14 +1,13 @@
 import { useCallback, useMemo } from "react";
 import { useState } from "react";
 import { FC } from "react";
-import styled from "styled-components";
 import { Question } from "./Question";
 import { useQuiz } from "services/quiz";
 import { Controller, useForm } from "react-hook-form";
 import { QuestionType } from "services/constants";
 import { ContentContainer } from "components/AppLayout";
 import { Button, Card, PageHeader, Typography } from "antd";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export const Quiz: FC<{ id: string }> = ({ id }) => {
   const [quiz] = useQuiz(id);

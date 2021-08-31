@@ -10,9 +10,9 @@ import {
   Typography,
 } from "antd";
 import FormItem from "antd/lib/form/FormItem";
-import { watch } from "fs";
 import { nanoid } from "nanoid";
 import { FC, useCallback } from "react";
+import { useFormState } from "react-hook-form";
 import { useWatch, useFieldArray, Controller, Control } from "react-hook-form";
 import { QuestionType } from "services/constants";
 import styled from "styled-components";
@@ -45,6 +45,8 @@ export const Question: FC<{
     },
     [remove]
   );
+
+  const { errors } = useFormState();
 
   useWatch({ name: `questions.${index}.options` });
 
@@ -209,22 +211,12 @@ export const Question: FC<{
           >
             Add Option
           </Button>
-          <Controller
-            name={`questions.${index}.options`}
-            control={control}
-            render={({ formState: { errors } }) => {
-              //@ts-expect-error
-              if (!errors.questions?.[index].options) return <></>;
-              return (
-                <Typography.Paragraph type="danger">
-                  {
-                    //@ts-expect-error
-                    errors.questions?.[index].options.message
-                  }
-                </Typography.Paragraph>
-              );
-            }}
-          />
+
+          {errors.questions?.[index].options && (
+            <Typography.Paragraph type="danger">
+              {errors.questions?.[index].options.message}
+            </Typography.Paragraph>
+          )}
         </>
       )}
       <div style={{ marginTop: "32px" }}>

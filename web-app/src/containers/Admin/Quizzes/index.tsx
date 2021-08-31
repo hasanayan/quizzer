@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useRouteMatch, Switch, Route, Link } from "react-router-dom";
+import { useRouteMatch, Switch, Route } from "react-router-dom";
 import { QuizDetail } from "./QuizDetail";
 import { QuizForm } from "./QuizForm";
 import { QuizList } from "./QuizList";

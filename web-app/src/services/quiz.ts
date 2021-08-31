@@ -34,9 +34,11 @@ export const removeQuiz = async (id: string) => {
     method: "DELETE",
   });
 
-  (mutate as ScopedMutator<API.Quiz[]>)(URL, (data) =>
-    data?.filter((quiz) => quiz.id !== id)
-  );
+  // (mutate as ScopedMutator<API.Quiz[]>)(URL, (data) =>
+  //   data?.filter((quiz) => quiz.id !== id)
+  // );
+
+  mutate(`${URL}`);
 
   mutate(`${URL}/${id}`);
 };

@@ -65,7 +65,7 @@ namespace api.Controllers
             var entity = _context.Quizzes.Find(Guid.Parse(id));
             _context.Remove(entity);
             _context.SaveChanges();
-            return StatusCode(200);
+            return StatusCode(200, "success");
         }
 
     }

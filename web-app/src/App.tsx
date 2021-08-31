@@ -18,9 +18,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <Auth0Provider
-        domain="carna.eu.auth0.com"
-        clientId="DBHyo9g3HKU9FCJdo319pV5W08ZKCD8e"
-        audience="https://api.carna.ai"
+        domain="quizzer.eu.auth0.com"
+        clientId="3HadCZ70bQLGBcEinBYZxjv688kkXYUQ"
+        audience="https://api.quizzer.com"
         redirectUri={window.location.origin}
         scope={scope}
         cacheLocation="localstorage"
@@ -37,11 +37,11 @@ const App = () => {
                   </Suspense>
                 </Route>
 
-                <Route path="/admin">
+                <PrivateRoute path="/admin" permission="admin">
                   <Suspense fallback="Loading">
                     <Admin />
                   </Suspense>
-                </Route>
+                </PrivateRoute>
 
                 <Route>
                   <Redirect to="/quiz" />
